@@ -16,8 +16,8 @@ generate:
 	$(BUF) generate
 
 check-generated: generate
-	git diff --exit-code -- gen/go
-	test -z "$$(git ls-files --others --exclude-standard gen/go)"
+	git diff --exit-code -- api/gen/go
+	test -z "$$(git ls-files --others --exclude-standard api/gen/go)"
 
 breaking:
 	$(BUF) breaking --against '.git#branch=$(BASE_BRANCH)'

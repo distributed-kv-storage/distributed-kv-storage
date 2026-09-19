@@ -1,16 +1,17 @@
-# API contracts
+# Distributed KV Storage
 
-Shared Protobuf contracts and generated Go code for the distributed KV project.
+Distributed key-value storage written in Go. The project consists of separate
+`kv-engine`, `repl`, `rpc-proxy`, `kvctl`, and `clusterstat` binaries.
 
-## Structure
+## API contracts
 
-- `proto` contains source contracts
-- `gen/go` contains generated messages and gRPC stubs
-- internal Raft RPCs remain in the `repl` repository
+- `api/proto` contains source contracts
+- `api/gen/go` contains generated messages and gRPC stubs
+- internal Raft RPCs belong to `repl`
 
 ## KV API v1
 
-[`kv.proto`](proto/kv/v1/kv.proto) defines `Set(key, value, ttl)` and
+[`kv.proto`](api/proto/kv/v1/kv.proto) defines `Set(key, value, ttl)` and
 `Get(key)`. Keys and values are byte sequences; keys must not be empty.
 
 TTL is expressed in seconds:
@@ -26,7 +27,7 @@ Health checks use the standard `grpc.health.v1.Health` service.
 Go import path:
 
 ```go
-import kvv1 "github.com/distributed-kv-storage/api-contracts/gen/go/kv/v1"
+import kvv1 "github.com/distributed-kv-storage/distributed-kv-storage/api/gen/go/kv/v1"
 ```
 
 ## Development
