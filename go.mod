@@ -1,4 +1,4 @@
-module github.com/distributed-kv-storage/api-contracts
+module github.com/distributed-kv-storage/distributed-kv-storage
 
 go 1.25.0
 
