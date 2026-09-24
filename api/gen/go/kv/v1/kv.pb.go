@@ -228,7 +228,7 @@ const file_kv_v1_kv_proto_rawDesc = "" +
 	"\x05value\x18\x01 \x01(\fR\x05value2g\n" +
 	"\tKVService\x12,\n" +
 	"\x03Set\x12\x11.kv.v1.SetRequest\x1a\x12.kv.v1.SetResponse\x12,\n" +
-	"\x03Get\x12\x11.kv.v1.GetRequest\x1a\x12.kv.v1.GetResponseBPZNgithub.com/distributed-kv-storage/distributed-kv-storage/api/gen/go/kv/v1;kvv1b\x06proto3"
+	"\x03Get\x12\x11.kv.v1.GetRequest\x1a\x12.kv.v1.GetResponseBCZAgithub.com/kirillidk/distributed-kv-storage/api/gen/go/kv/v1;kvv1b\x06proto3"
 
 var (
 	file_kv_v1_kv_proto_rawDescOnce sync.Once

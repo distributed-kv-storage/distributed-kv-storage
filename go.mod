@@ -1,4 +1,4 @@
-module github.com/distributed-kv-storage/distributed-kv-storage
+module github.com/kirillidk/distributed-kv-storage
 
 go 1.25.0
 
