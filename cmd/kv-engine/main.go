@@ -3,7 +3,7 @@ package main
 import (
 	"flag"
 
-	kvengine "github.com/distributed-kv-storage/distributed-kv-storage/internal/kv-engine"
+	kvengine "github.com/kirillidk/distributed-kv-storage/internal/kv-engine"
 )
 
 var (
