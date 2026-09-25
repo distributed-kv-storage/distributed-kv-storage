@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  contracts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+          cache: true
+
+      - name: Set up Buf
+        uses: bufbuild/buf-action@v1
+        with:
+          version: 1.72.0
+          github_token: ${{ github.token }}
+          setup_only: true
+
+      - name: Validate contracts and generated code
+        run: make ci
