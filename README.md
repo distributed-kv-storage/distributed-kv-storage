@@ -27,7 +27,7 @@ Health checks use the standard `grpc.health.v1.Health` service.
 Go import path:
 
 ```go
-import kvv1 "github.com/distributed-kv-storage/distributed-kv-storage/api/gen/go/kv/v1"
+import kvv1 "github.com/kirillidk/distributed-kv-storage/api/gen/go/kv/v1"
 ```
 
 ## Development

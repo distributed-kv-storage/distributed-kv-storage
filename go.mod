@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 module github.com/distributed-kv-storage/distributed-kv-storage
+=======
+module github.com/kirillidk/distributed-kv-storage
+>>>>>>> origin/main
 
 go 1.25.0
 
@@ -8,8 +12,11 @@ require (
 )
 
 require (
+<<<<<<< HEAD
 	github.com/stretchr/testify v1.12.1 // indirect
 	go.yaml.in/yaml/v3 v3.0.5 // indirect
+=======
+>>>>>>> origin/main
 	golang.org/x/net v0.57.0 // indirect
 	golang.org/x/sys v0.47.0 // indirect
 	golang.org/x/text v0.40.0 // indirect
