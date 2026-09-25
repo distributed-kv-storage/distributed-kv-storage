@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	kvv1 "github.com/distributed-kv-storage/distributed-kv-storage/api/gen/go/kv/v1"
+	kvv1 "github.com/kirillidk/distributed-kv-storage/api/gen/go/kv/v1"
 	"github.com/stretchr/testify/assert"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
