@@ -2,6 +2,7 @@ package kvengine
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"log"
 	"net"
@@ -24,17 +25,18 @@ type server struct {
 }
 
 func convertError(e error) error {
-	if e == ErrEmptyKey {
+	switch {
+	case errors.Is(e, ErrEmptyKey):
 		return status.Error(codes.InvalidArgument, e.Error())
-	}
-	if e == ErrKeyNotFound {
+	case errors.Is(e, ErrKeyNotFound):
 		return status.Error(codes.NotFound, e.Error())
+	default:
+		return status.Error(codes.Internal, e.Error())
 	}
-	return e
 }
 
 func (s *server) Set(_ context.Context, in *kvv1.SetRequest) (*kvv1.SetResponse, error) {
-	err := s.storage.Put(string(in.Key), string(in.Value), in.Ttl)
+	err := s.storage.Set(string(in.Key), string(in.Value), in.Ttl)
 	if err != nil {
 		return nil, convertError(err)
 	}
