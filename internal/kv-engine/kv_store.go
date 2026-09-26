@@ -30,7 +30,7 @@ type MemoryStorage struct {
 	timeSource TimeSource
 }
 
-func (m MemoryStorage) Set(key string, value string, expires uint64) error {
+func (m *MemoryStorage) Set(key string, value string, expires uint64) error {
 	if key == "" {
 		return ErrEmptyKey
 	}
@@ -46,7 +46,7 @@ func (m MemoryStorage) Set(key string, value string, expires uint64) error {
 	return nil
 }
 
-func (m MemoryStorage) Get(key string) (string, error) {
+func (m *MemoryStorage) Get(key string) (string, error) {
 	if key == "" {
 		return "", ErrEmptyKey
 	}
@@ -65,6 +65,6 @@ func (m MemoryStorage) Get(key string) (string, error) {
 	}
 }
 
-func CreateMemoryStorage() Storage {
-	return MemoryStorage{make(map[string]StorageEntry), &sync.RWMutex{}, SystemTimeSource{}}
+func CreateMemoryStorage() *MemoryStorage {
+	return &MemoryStorage{make(map[string]StorageEntry), &sync.RWMutex{}, SystemTimeSource{}}
 }
