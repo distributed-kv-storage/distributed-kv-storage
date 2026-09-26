@@ -6,9 +6,12 @@ import (
 )
 
 var (
-	ErrEmptyKey      = errors.New("Key can't be empty")
-	ErrKeyNotFound   = errors.New("Key not found")
-	SECONDS_IN_MONTH = uint64(2_502_000)
+	ErrEmptyKey    = errors.New("Key can't be empty")
+	ErrKeyNotFound = errors.New("Key not found")
+)
+
+const (
+	SECONDS_IN_MONTH = uint64(30 * 24 * 60 * 60)
 )
 
 type Storage interface {
@@ -38,8 +41,8 @@ func (m MemoryStorage) Set(key string, value string, expires uint64) error {
 		expires += m.timeSource.Now()
 	}
 	m.lock.Lock()
+	defer m.lock.Unlock()
 	m.values[key] = StorageEntry{value, expires}
-	m.lock.Unlock()
 	return nil
 }
 
@@ -49,8 +52,8 @@ func (m MemoryStorage) Get(key string) (string, error) {
 	}
 
 	m.lock.RLock()
+	defer m.lock.RUnlock()
 	value, ok := m.values[key]
-	m.lock.RUnlock()
 	if !ok {
 		return "", ErrKeyNotFound
 	}
